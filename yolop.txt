@@ -1,0 +1,6 @@
+Steps to Adjust for More Classes:
+Increase the Output Channels: If you want to add more labels (classes) to the driving area segmentation, update the number of output channels in this Conv layer. For example, if you're adding 3 more classes, you would change the 2 to 5 (representing 5 classes in total).
+[ -1, Conv, [8, 5, 3, 1]], #33 Driving area segmentation head with 5 classes
+Update the Loss Function: Ensure the loss function for segmentation is updated to handle multi-class segmentation (such as Cross Entropy Loss). In your training code, you should now use nn.CrossEntropyLoss() instead of nn.BCEWithLogitsLoss().
+
+Modify DataLoader: Ensure that your dataset annotations now reflect the additional labels and that the dataloader correctly processes the updated masks with these new classes.
